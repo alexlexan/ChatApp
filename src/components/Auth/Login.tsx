@@ -1,4 +1,5 @@
-import React from "react";
+import React, { FormEvent } from "react";
+import firebase from "../../firebase";
 import {
   Grid,
   Form,
@@ -6,65 +7,73 @@ import {
   Button,
   Header,
   Message,
-  Icon
+  Icon,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import clasess from "./Register.module.sass";
-import firebase from "../../firebase";
 
-class Login extends React.Component {
+type Props = {};
+
+type error = { message: string };
+
+type State = {
+  email: string;
+  password: string;
+  errors: error[] | [];
+  loading: boolean;
+};
+
+class Login extends React.Component<Props, State> {
   state = {
     email: "",
     password: "",
     errors: [],
-    loading: false
+    loading: false,
   };
 
-  displayErrors = errors =>
+  displayErrors = (errors: error[]) =>
     errors.map((error, i) => <p key={i}>{error.message}</p>);
 
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+  handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const name = event.target.name as "email" | "password";
+    this.setState({ [name]: event.target.value } as Pick<State, typeof name>);
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     if (this.isFormValid(this.state)) {
       this.setState({ errors: [], loading: true });
       firebase
-       .auth()
-       .signInWithEmailAndPassword(this.state.email, this.state.password)
-       .then(signedInUser => {
-         console.log(signedInUser)
-       })
-       .catch(err => {
-         console.log(err)
-         this.setState({
-          errors: this.state.errors.concat(err),
-          loading: false
-         })
-       })
+        .auth()
+        .signInWithEmailAndPassword(this.state.email, this.state.password)
+        .then((signedInUser) => {
+          console.log(signedInUser);
+        })
+        .catch((err) => {
+          console.error(err);
+          this.setState({
+            errors: this.state.errors.concat(err),
+            loading: false,
+          });
+        });
     }
   };
 
-  isFormValid = ({email, password}) => email && password
+  isFormValid = ({ email, password }: { email: string; password: string }) =>
+    email && password;
 
-  handleInputError = (errors, inputName) => {
-    return errors.some(error => error.message.toLowerCase().includes(inputName))
+  handleInputError = (errors: error[], inputName: string) => {
+    return errors.some((error) =>
+      error.message.toLowerCase().includes(inputName)
+    )
       ? "error"
       : "";
   };
 
   render() {
-    const {
-      email,
-      password,
-      errors,
-      loading
-    } = this.state;
+    const { email, password, errors, loading } = this.state;
 
     return (
-      <Grid textAlign="center" verticalAlign="middle" className={clasess.App}>
+      <Grid textAlign="center" verticalAlign="middle" className="app">
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h1" icon color="violet" textAlign="center">
             <Icon name="code branch" color="violet" />
@@ -78,8 +87,8 @@ class Login extends React.Component {
                 icon="mail"
                 iconPosition="left"
                 placeholder="Email Address"
-                value={email}
                 onChange={this.handleChange}
+                value={email}
                 className={this.handleInputError(errors, "email")}
                 type="email"
               />
@@ -90,8 +99,8 @@ class Login extends React.Component {
                 icon="lock"
                 iconPosition="left"
                 placeholder="Password"
-                value={password}
                 onChange={this.handleChange}
+                value={password}
                 className={this.handleInputError(errors, "password")}
                 type="password"
               />
@@ -114,7 +123,7 @@ class Login extends React.Component {
             </Message>
           )}
           <Message>
-            Dont't have an account? <Link to="/register">Register</Link>
+            Don't have an account? <Link to="/register">Register</Link>
           </Message>
         </Grid.Column>
       </Grid>
