@@ -27,42 +27,48 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Description
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Slack chat application with React, Redux, and Firebase 5 from scratch
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Sending and receiving messages instantly with the real-time Firebase Database
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Uploading and displaying image messages using Firebase Storage
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Notifications to display new messages in other channels
 
-## Learn More
+Sending Direct Messages to other users in our chat
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Tracking / showing when users are online / offline
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Searching messages within created channels
 
-### Code Splitting
+Custom animations to see when other users are typing in the same channel
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Creating, cropping and uploading user avatars
 
-### Analyzing the Bundle Size
+The ability to favorite / unfavorite public channels
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Add emojis to our messages with an Emoji Picker component
 
-### Making a Progressive Web App
+User authentication with Firebase
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Form validation for our Login and Register forms
 
-### Advanced Configuration
+State management with Redux, with simple, straightforward patterns
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Creating stunning user interfaces with Semantic UI React
 
-### Deployment
+Essential features of React Router 4 (Switch component, withRouter HOC, history object)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Tons of work with ES6 / 7
 
-### `npm run build` fails to minify
+Helpful browser tools such as React / Redux Dev Tools
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Securing our application with Firebase Rules
+
+Deploying our chat app to the web using Firebase Tools
+
+Keyboard shortcuts to rapidly send messages
+
+And more!
