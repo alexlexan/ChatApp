@@ -20,7 +20,7 @@
     "firebase": "^7.11.0",
     "md5": "^2.2.1",
     "moment": "^2.24.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.0",
     "react-avatar-editor": "^12.0.0-beta.0",
     "react-color": "^2.18.0",
